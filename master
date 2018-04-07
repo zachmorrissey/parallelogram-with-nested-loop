@@ -1,0 +1,64 @@
+/*The program asks for how many jackalopes are in the population. Then it asks for how many generations you want the program to measure. It will increase each generation by 3% born and decrease 1%. 
+
+Sample output
+How many jackalopes do you have? 132
+How many generations do you want to wait? 2
+If you start with 132 jackalopes and wait 2 generations 
+you'll end up with 137 jackalopes
+Do you want to continue? 
+(y/n) y
+How many jackalopes do you have? 500
+How many generations do you want to wait? 5
+If you start with 500 jackalopes and wait 5 generations 
+you'll end up with 551 jackalopes
+Do you want to continue? 
+(y/n) y
+How many jackalopes do you have? 500
+How many generations do you want to wait? 5
+If you start with 500 jackalopes and wait 5 generations 
+you'll end up with 551 jackalopes
+Do you want to continue? 
+(y/n) n*/ 
+
+
+import java.util.Scanner;
+class main 
+{
+public static void main(String[] args) 
+  {
+  Scanner sc = new Scanner (System.in);
+  
+  final double BIRTH, DEATH; 
+  BIRTH = .03; 
+  DEATH = .01; 
+  int num_jack, gen_input; 
+  int total_jack=0;
+  String ui = ("y");
+  
+  do
+  {
+    System.out.printf("How many jackalopes do you have?");
+    num_jack = sc.nextInt();
+  
+    System.out.printf("How many generations do you want to wait?");
+    gen_input = sc.nextInt();
+  
+  total_jack = num_jack;
+    for (int gen = 0 ; gen<gen_input ; gen++)
+    {
+      total_jack=((int)(total_jack * BIRTH) + total_jack) - (int)(total_jack * DEATH);
+    }
+    
+    System.out.printf("If you start with %d jackalopes and wait %d generations \nyou'll end up with %d jackalopes",num_jack, gen_input, total_jack); 
+    
+    sc.nextLine();
+    
+    System.out.printf("\nDo you want to continue? \n(y/n)");
+    ui = sc.nextLine();
+    if (ui.equals("n")) 
+      {System.exit(0);}
+  }
+   while (ui.equals("y") || ui.equals("Y"));  
+    
+}
+  }
